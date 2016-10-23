@@ -1,0 +1,48 @@
+ <html>
+    <head>
+	<title>448Blog Create New User</title>
+    <style>
+	body{ background-color: azure;}
+	h3{ color: DarkBlue;
+		font-family: Georgia;
+		font-size: 300%;}
+	h5{ color: DarkBlue;
+		font-family: Georgia;
+		font-size: 150%;}
+	form{ border-width: thin;
+		border-color: blue;
+		font-family: Georgia;
+		font-size: 100%;}
+    </style>
+    <script>
+	function Validate() {
+		if(document.getElementById("username").value == ""){
+			alert("Must enter username");
+			return false;
+		}
+		return true;
+	}
+    </script>
+    </head>
+    <body>
+	<h3>448Blog</h3>
+	<h5>New User Account</h5>
+	<br />
+	<form method="post" onsubmit=" return Validate()" action="CreateUser.php">
+	<div>
+	   <label for="username">UserName:</label>
+	   <br />
+	   <input id="username" name="username" type="text" />
+	</div>
+	<br />
+	<div>
+	    <label>User Type:</label>
+	    <input type="radio" name="usertype" value="Admin">Admin
+	    <input type="radio" name="usertype" value="Regular User" checked>Regular User<br>
+	</div>
+        <div>
+            <button type="submit">Create User</button>
+        </div>
+	</form>
+    </body>
+</html>

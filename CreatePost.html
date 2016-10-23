@@ -1,0 +1,39 @@
+ <html>
+    <head>
+	<title>448Blog Create New Post</title>
+    <style>
+	body{ background-color: azure;}
+	h3{ color: DarkBlue;
+		font-family: Georgia;
+		font-size: 300%;}
+	h5{ color: DarkBlue;
+		font-family: Georgia;
+		font-size: 150%;}
+	form{ border-width: thin;
+		border-color: blue;
+		font-family: Georgia;
+		font-size: 100%;}
+    </style>
+    <script>
+	function Validate() {
+		if(document.getElementById("username").value == "" | document.getElementById("posttext").value == ""){
+			alert("Must enter username and content");
+			return false;
+		}
+		return true;
+	}
+    </script>
+    </head>
+    <body>
+	<h3>448Blog</h3>
+	<h5>Create a new post!</h5>
+	<br />
+	<form id="postform" method="post" onsubmit=" return Validate()" action="CreatePost.php">
+	    <label>Enter username:</label>
+	    <input id="username" name="username" type="text" />
+            <button type="submit">Submit Post</button>
+	</form>
+	<br />
+	<textarea rows="6" cols="50" id="posttext" name="posttext" form="postform">Begin post here...</textarea>
+    </body>
+</html>

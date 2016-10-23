@@ -1,0 +1,62 @@
+ <html>
+    <head>
+	<title>EECS 448 Blog</title>
+    <style>
+    </style>
+    <script>
+        //function click(cb){
+            //alert(cb.value);
+        //}
+        //onclick=\"click(this)\"
+    </script>
+    </head>
+    <body>
+<?php
+    echo "<style>";
+    echo "body{ background-color: azure;}";
+    echo "h3{ color: DarkBlue;";
+    echo "font-family: Georgia;";
+    echo "font-size: 300%}";
+    echo "h5{ border-width: thin;";
+    echo "border-color: blue;";
+    echo "font-family: Georgia;";
+    echo "font-size: 100%;}";
+    echo "</style>";
+    echo "<h3>448Blog</h3>";
+    echo "<h5>Select posts you would like to delete, then click Delete</h5>";
+    echo "<form id=\"deleteform\" method=\"post\" action=\"DeletePosts.php\">";
+    echo "<button type=\"submit\">Delete</button>";
+    echo "<table width=\"50%\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\" form=\"deleteform\">";
+    echo "<tr>";
+    echo "<th>Post ID</th>";
+    echo "<th>Content</th>";
+    echo "<th>Author</th>";
+    echo "<th>Select</th>";
+    echo "</tr>";
+                
+    $mysqli = new mysqli("mysql.eecs.ku.edu", "rmanweiler", "hello", "rmanweiler");
+
+    if ($mysqli->connect_errno) {
+            printf("Connect failed: %s\n", $mysqli->connect_error);
+            exit();
+    }
+    
+    $query = "SELECT post_id, content, author_id  FROM Posts";
+
+    if ($result = $mysqli->query($query)) {
+        while ($row = $result->fetch_assoc()) {
+            echo "<tr>";
+            echo "<td>".$row["post_id"]."</td>";
+            echo "<td>".$row["content"]."</td>";
+            echo "<td>".$row["author_id"]."</td>";
+            echo "<td><input type=\"checkbox\" name='posts[]' value=".$row["post_id"]." ></td>";
+            echo "</tr>";
+        }
+        $result->free();
+        }
+    $mysqli->close();
+      echo "</form>";
+?>
+
+    </body>
+</html>

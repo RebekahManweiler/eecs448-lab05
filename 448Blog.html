@@ -1,0 +1,40 @@
+ <html>
+    <head>
+	<title>EECS 448 Blog</title>
+    <style>
+	body{ background-color: azure;}
+	h3{ color: DarkBlue;
+		font-family: Georgia;
+		font-size: 300%}
+	form{ border-width: thin;
+		border-color: blue;
+		font-family: Georgia;
+		font-size: 100%;}
+    </style>
+    <script>
+	function Validate() {
+		if(document.getElementById("username").value == ""){
+			alert("Must enter username");
+			return false;
+		}
+		return true;
+	}
+    </script>
+    </head>
+    <body>
+	<h3>448Blog</h3>
+	<form method="post" onsubmit=" return Validate()" action="448Blog.php">
+	<div>
+	   <label for="usernamelabel">UserName:</label>
+	   <br />
+	   <input id="username" name="username" type="text" />
+	</div>
+	<br />
+        <div>
+            <button type="submit">Log In</button>
+        </div>
+	</form>
+	<br />
+	<p><a href="CreateUser.html">New User? Click here and sign up!</a></p>
+    </body>
+</html>
